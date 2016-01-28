@@ -555,7 +555,7 @@ module IntuitIdsAggcat
         def write_to_log *args
           #yield if block_given? && Socket.gethostname =~ /ryan|ben/i
           data_string = args.join("\n")
-          unless (defined? Rails) && Rails.env.development?
+          unless (defined? Rails) && Rails.rails_env == "development"
             data_string = data_string.gsub(/<v11[^>]*>.+<\/v11[^>]*>/, 'HIDDEN_CHALLENGE_RESPONSES ')
             data_string = data_string.gsub(/<challenge>.+<\/challenge>/, 'HIDDEN_CHALLENGES ')
             data_string = data_string.gsub(/<credential>.+<\/credential>/, 'HIDDEN_CREDENTIALS ')
